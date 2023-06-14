@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meu-deployment-debian
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: debian
+  template:
+    metadata:
+      labels:
+        app: debian
+    spec:
+      containers:
+      - name: debian
+        image: italorafaeltavares/debian-network
+        # command: ["sleep", "infinity"]
+        ports:
+        - containerPort: 80
+          protocol: TCP
